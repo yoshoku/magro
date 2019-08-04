@@ -30,7 +30,11 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
     return Qnil;
   }
 
-  fread(header, 1, 8, file_ptr);
+  if (fread(header, 1, 8, file_ptr) < 8) {
+    fclose(file_ptr);
+    return Qnil;
+  }
+
   if (png_sig_cmp(header, 0, 8)) {
     fclose(file_ptr);
     return Qnil;
