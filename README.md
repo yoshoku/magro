@@ -1,5 +1,6 @@
 # Magro
 
+[![Build Status](https://travis-ci.org/yoshoku/magro.svg?branch=master)](https://travis-ci.org/yoshoku/magro)
 [![BSD 3-Clause License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://github.com/yoshoku/numo-liblinear/blob/master/LICENSE.txt)
 
 Magro is an image processing library in Ruby.
