@@ -1,7 +1,14 @@
 ---
-sudo: false
+sudo: true
+os: linux
+dist: bionic
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.6
-before_install: gem install bundler -v 2.0.2
+  - '2.4'
+  - '2.5'
+  - '2.6'
+
+before_install:
+  - sudo apt-get install -y libpng-dev libjpeg-dev
+  - gem install bundler -v 2.0.2
