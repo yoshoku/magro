@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pp'
-
 RSpec.describe Magro::IO do
   let(:img_red) do
     Numo::UInt8[[255, 255, 255, 0, 0],
