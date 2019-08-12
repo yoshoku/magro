@@ -45,12 +45,14 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
   if (png_ptr == NULL) {
     fclose(file_ptr);
+    rb_raise(rb_eNoMemError, "Failed to allocate memory.");
     return Qnil;
   }
   info_ptr = png_create_info_struct(png_ptr);
   if (info_ptr == NULL) {
     png_destroy_read_struct(&png_ptr, NULL, NULL);
     fclose(file_ptr);
+    rb_raise(rb_eNoMemError, "Failed to allocate memory.");
     return Qnil;
   }
   if (setjmp(png_jmpbuf(png_ptr))) {
@@ -186,12 +188,14 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
   if (png_ptr == NULL) {
     fclose(file_ptr);
+    rb_raise(rb_eNoMemError, "Failed to allocate memory.");
     return Qfalse;
   }
   info_ptr = png_create_info_struct(png_ptr);
   if (info_ptr == NULL) {
     png_destroy_read_struct(&png_ptr, NULL, NULL);
     fclose(file_ptr);
+    rb_raise(rb_eNoMemError, "Failed to allocate memory.");
     return Qfalse;
   }
   if (setjmp(png_jmpbuf(png_ptr))) {
