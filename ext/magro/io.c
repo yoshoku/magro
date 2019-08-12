@@ -58,6 +58,7 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   if (setjmp(png_jmpbuf(png_ptr))) {
     png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
     fclose(file_ptr);
+    rb_raise(rb_eIOError, "Error happened while reading file '%s'", filename);
     return Qnil;
   }
 
@@ -110,6 +111,7 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   if (n_dims == 0) {
     fclose(file_ptr);
     png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+    rb_raise(rb_eIOError, "Unsupported color type of input file '%s'", filename);
     return Qnil;
   }
 
@@ -267,6 +269,7 @@ VALUE magro_io_read_jpg(VALUE self, VALUE filename_)
   jpeg.err = jpeg_std_error(&err.pub);
   err.pub.error_exit = my_error_exit;
   if (setjmp(err.setjmp_buffer)) {
+    rb_raise(rb_eIOError, "Error happened while reading file '%s'", filename);
     return Qnil;
   }
 
