@@ -26,16 +26,19 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   uint8_t* nary_ptr;
 
   if (file_ptr == NULL) {
+    rb_raise(rb_eIOError, "Failed to open file '%s'", filename);
     return Qnil;
   }
 
   if (fread(header, 1, 8, file_ptr) < 8) {
     fclose(file_ptr);
+    rb_raise(rb_eIOError, "Failed to read header info '%s'", filename);
     return Qnil;
   }
 
   if (png_sig_cmp(header, 0, 8)) {
     fclose(file_ptr);
+    rb_raise(rb_eIOError, "Failed to read header info '%s'", filename);
     return Qnil;
   }
 
@@ -142,6 +145,11 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
   narray_t* image_nary;
   uint8_t* image_ptr;
 
+  if (file_ptr == NULL) {
+    rb_raise(rb_eIOError, "Failed to open file '%s'", filename);
+    return Qfalse;
+  }
+
   if (CLASS_OF(image) != numo_cUInt8) {
     image = rb_funcall(numo_cUInt8, rb_intern("cast"), 1, image);
   }
@@ -175,9 +183,6 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
       break;
   }
 
-  if (file_ptr == NULL) {
-    return Qfalse;
-  }
   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
   if (png_ptr == NULL) {
     fclose(file_ptr);
@@ -251,6 +256,7 @@ VALUE magro_io_read_jpg(VALUE self, VALUE filename_)
   JSAMPLE* tmp;
 
   if (file_ptr == NULL) {
+    rb_raise(rb_eIOError, "Failed to open file '%s'", filename);
     return Qnil;
   }
 
@@ -335,6 +341,7 @@ VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
 
   file_ptr = fopen(filename, "wb");
   if (file_ptr == NULL) {
+    rb_raise(rb_eIOError, "Failed to open file '%s'", filename);
     jpeg_destroy_compress(&jpeg);
     return Qfalse;
   }
