@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/yoshoku/magro.svg?branch=master)](https://travis-ci.org/yoshoku/magro)
 [![Gem Version](https://badge.fury.io/rb/magro.svg)](https://badge.fury.io/rb/magro)
 [![BSD 3-Clause License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://github.com/yoshoku/numo-liblinear/blob/master/LICENSE.txt)
-[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](https://www.rubydoc.info/gems/magro/0.1.0)
+[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](https://www.rubydoc.info/gems/magro/0.1.1)
 
 Magro is an image processing library in Ruby.
 Magro uses [Numo::NArray](https://github.com/ruby-numo/numo-narray) arrays as image objects.
