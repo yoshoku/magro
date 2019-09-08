@@ -9,6 +9,8 @@
 /tmp/
 /spec/files/tmp.jpeg
 /spec/files/tmp.png
+/spec/files/tmp_UC.JPEG
+/spec/files/tmp_UC.PNG
 
 # rspec failure tracking
 .rspec_status
