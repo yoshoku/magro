@@ -15,8 +15,8 @@ module Magro
     # @return [Numo::UInt8] (shape: [height, width, n_channels]) Loaded image.
     def imread(filename)
       raise ArgumentError, 'Expect class of filename to be String.' unless filename.is_a?(String)
-      return read_jpg(filename) if filename =~ /\.(jpeg|jpg|jpe)$/
-      return read_png(filename) if filename =~ /\.png$/
+      return read_jpg(filename) if filename.downcase =~ /\.(jpeg|jpg|jpe)$/
+      return read_png(filename) if filename.downcase =~ /\.png$/
     end
 
     # Saves an image to file.
@@ -33,7 +33,7 @@ module Magro
       raise ArgumentError, 'Expect class of filename to be String.' unless filename.is_a?(String)
       raise ArgumentError, 'Expect class of image to be Numo::NArray.' unless image.is_a?(Numo::NArray)
 
-      if filename =~ /\.(jpeg|jpg|jpe)$/
+      if filename.downcase =~ /\.(jpeg|jpg|jpe)$/
         unless quality.nil?
           raise ArgumentError, 'Expect class of quality to be Numeric.' unless quality.is_a?(Numeric)
           raise ArgumentError, 'Range of quality value between 0 to 100.' unless quality.between?(0, 100)
@@ -41,7 +41,7 @@ module Magro
         return save_jpg(filename, image, quality)
       end
 
-      return save_png(filename, image) if filename =~ /\.png$/
+      return save_png(filename, image) if filename.downcase =~ /\.png$/
 
       false
     end

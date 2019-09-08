@@ -75,6 +75,15 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_gray)
   end
 
+  it 'loads png file with upper case extension' do
+    img = described_class.imread(File.expand_path(__dir__ + '/files/TEST_UC.PNG'))
+    expect(img.shape).to eq([5, 5, 4])
+    expect(img[true, true, 0]).to eq(img_red)
+    expect(img[true, true, 1]).to eq(img_green)
+    expect(img[true, true, 2]).to eq(img_blue)
+    expect(img[true, true, 3]).to eq(img_alpha)
+  end
+
   it 'loads RGB jpeg file' do
     img = described_class.imread(File.expand_path(__dir__ + '/files/test_rgb.jpg'))
     expect(img.shape).to eq([5, 5, 3])
@@ -83,6 +92,11 @@ RSpec.describe Magro::IO do
   it 'loads grayscale jpeg file' do
     img = described_class.imread(File.expand_path(__dir__ + '/files/test_gray.jpg'))
     expect(img.shape).to eq([5, 5])
+  end
+
+  it 'loads jpeg file with upper case extension' do
+    img = described_class.imread(File.expand_path(__dir__ + '/files/TEST_RGB_UC.JPG'))
+    expect(img.shape).to eq([5, 5, 3])
   end
 
   it 'saves RGBA png file' do
@@ -109,6 +123,14 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_gray)
   end
 
+  it 'saves png file with uppper case extension' do
+    res = described_class.imsave(File.expand_path(__dir__ + '/files/tmp_UC.PNG'), img_rgba)
+    img = described_class.imread(File.expand_path(__dir__ + '/files/tmp_UC.PNG'))
+    expect(res).to be_truthy
+    expect(img.shape).to eq([5, 5, 4])
+    expect(img).to eq(img_rgba)
+  end
+
   it 'saves RGB jpeg file' do
     res = described_class.imsave(File.expand_path(__dir__ + '/files/tmp.jpeg'), img_rgb, quality: 50)
     img = described_class.imread(File.expand_path(__dir__ + '/files/tmp.jpeg'))
@@ -125,6 +147,15 @@ RSpec.describe Magro::IO do
     expect(res).to be_truthy
     expect(img.shape).to eq([5, 5])
     expect(err).to be <= 2
+  end
+
+  it 'saves RGB jpeg file with uppser case extension' do
+    res = described_class.imsave(File.expand_path(__dir__ + '/files/tmp_UC.JPEG'), img_rgb, quality: 50)
+    img = described_class.imread(File.expand_path(__dir__ + '/files/tmp_UC.JPEG'))
+    err = Math.sqrt(((img_rgb - img)**2).sum.fdiv(img.shape.reduce(&:*)))
+    expect(res).to be_truthy
+    expect(img.shape).to eq([5, 5, 3])
+    expect(err).to be <= 10
   end
 
   it 'returns nil when given filename with unsupported extension on loading' do
