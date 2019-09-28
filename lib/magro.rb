@@ -6,3 +6,4 @@ require 'magro/version'
 require 'magro/magro'
 
 require 'magro/io'
+require 'magro/filter'
