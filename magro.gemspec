@@ -25,7 +25,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/magro/extconf.rb']
 
+  spec.metadata      = {
+    'homepage_uri' => 'https://github.com/yoshoku/magro',
+    'changelog_uri' => 'https://github.com/yoshoku/magro/blob/master/CHANGELOG.md',
+    'source_code_uri' => 'https://github.com/yoshoku/magro',
+    'documentation_uri' => 'https://yoshoku.github.io/magro/doc/',
+    'bug_tracker_uri' => 'https://github.com/yoshoku/magro/issues'
+  }
+
   spec.add_runtime_dependency 'numo-narray', '~> 0.9.1'
+  spec.add_runtime_dependency 'numo-pocketfft', '>= 0.2.0'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 10.0'
