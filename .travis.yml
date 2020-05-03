@@ -1,5 +1,4 @@
 ---
-sudo: true
 os: linux
 dist: bionic
 language: ruby
@@ -8,7 +7,13 @@ rvm:
   - '2.4'
   - '2.5'
   - '2.6'
+  - '2.7'
+
+addons:
+  apt:
+    packages:
+      - libpng-dev
+      - libjpeg-dev
 
 before_install:
-  - sudo apt-get install -y libpng-dev libjpeg-dev
-  - gem install bundler -v 2.0.2
+  - gem install bundler -v 2.1.4
