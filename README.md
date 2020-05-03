@@ -10,13 +10,14 @@ Magro uses [Numo::NArray](https://github.com/ruby-numo/numo-narray) arrays as im
 
 ## Installation
 
-Magro dependents some external libraries to provides functions loading image file.
+Magro dependents libpng and libjpeg to provides functions loading image file.
+It is recommended that using libpng version 1.6 or later.
 
 macOS:
 
     $ brew install libpng libjpeg
 
-Ubuntu:
+Ubuntu (bionic):
 
     $ sudo apt-get install libpng-dev libjpeg-dev
 
