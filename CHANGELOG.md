@@ -1,3 +1,7 @@
+# 0.2.0
+- Add [transform module](https://yoshoku.github.io/magro/doc/Magro/Transform.html) and resize method.
+- Fix some configulation files.
+
 # 0.1.2
 - Fix bug that fails to read and save file with upper case file extension.
 
