@@ -58,7 +58,7 @@ module Magro
 
       resized = a * (1 - x_d) * (1 - y_d) + b * x_d * (1 - y_d) + c * (1 - x_d) * y_d + d * x_d * y_d
 
-      resized = resized.ceil.clip(image.class::MIN, image.class::MAX) if integer_narray?(image)
+      resized = resized.round.clip(image.class::MIN, image.class::MAX) if integer_narray?(image)
       resized = image.class.cast(resized) unless resized.is_a?(image.class)
       resized.reshape(new_height, new_width)
     end

@@ -15,8 +15,8 @@ RSpec.describe Magro::Transform do
     end
 
     let(:exp_small) do
-      Numo::UInt8[[46, 16],
-                  [16, 28]]
+      Numo::UInt8[[45, 16],
+                  [16, 27]]
     end
 
     let(:exp_large) do
