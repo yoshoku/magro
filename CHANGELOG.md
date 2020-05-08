@@ -1,3 +1,7 @@
+# 0.3.0
+- Add [filter module](https://yoshoku.github.io/magro/doc/Magro/Filter.html) consists of image filtering methods.
+- Change to use round instead of ceil in [quantization of resize method](https://github.com/yoshoku/magro/commit/1b3308ddfb98a650889483af3cd2045aaf6b8837) when given integer image.
+
 # 0.2.0
 - Add [transform module](https://yoshoku.github.io/magro/doc/Magro/Transform.html) and resize method.
 - Fix some configulation files.
