@@ -45,11 +45,11 @@ Or install it yourself as:
 ```ruby
 > require 'magro'
 => true
-> image = Magro::IO.imread('lena.png')
+> image = Magro::IO.imread('foo.png')
 => Numo::UInt8#shape=[512,512,3]
 > grayscale = image.median(axis: 2)
 => Numo::UInt8#shape=[512,512]
-> Magro::IO.imsave('lena_gray.png', grayscale)
+> Magro::IO.imsave('foo_gray.png', grayscale)
 => true
 ```
 
