@@ -6,13 +6,16 @@
 [![BSD 3-Clause License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://github.com/yoshoku/numo-liblinear/blob/master/LICENSE.txt)
 [![Documentation](http://img.shields.io/badge/api-reference-blue.svg)](https://yoshoku.github.io/magro/doc/)
 
-Magro is an image processing library in Ruby.
-Magro uses [Numo::NArray](https://github.com/ruby-numo/numo-narray) arrays as image objects.
+Magro is a minimal image processing library in Ruby.
+Magro uses [Numo::NArray](https://github.com/ruby-numo/numo-narray) arrays as image objects and
+provides basic image processing functions.
+Current supporting features are reading and writing JPEG and PNG images,
+image resizing with bilinear interpolation method, and image filtering.
 
 ## Installation
 
-Magro dependents libpng and libjpeg to provides functions loading image file.
-It is recommended that using libpng version 1.6 or later.
+Magro dependents libpng and libjpeg to provides functions reading and writing image file.
+Moreover, it is recommended that using libpng version 1.6 or later.
 
 macOS:
 

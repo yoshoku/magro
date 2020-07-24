@@ -8,8 +8,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ['yoshoku']
   spec.email         = ['yoshoku@outlook.com']
 
-  spec.summary       = 'Magro is an image processing library for Ruby.'
-  spec.description   = 'Magro is an image processing library for Ruby.'
+  spec.summary       = 'Magro is a minimal image processing library for Ruby.'
+  spec.description   = <<~MSG
+    Magro is a minimal image processing library for Ruby.
+    Magro uses Numo::NArray arrays as image objects and provides basic image processing functions.
+    Current supporting features are reading and writing JPEG and PNG images,
+    image resizing with bilinear interpolation method, and image filtering.
+  MSG
 
   spec.homepage      = 'https://github.com/yoshoku/magro'
   spec.license       = 'BSD-3-Clause'
