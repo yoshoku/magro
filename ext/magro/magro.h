@@ -3,6 +3,6 @@
 
 #include <ruby.h>
 
-#include "io.h"
+#include "imgrw.h"
 
 #endif /* MAGRO_H */

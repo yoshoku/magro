@@ -1,4 +1,4 @@
-#include "io.h"
+#include "imgrw.h"
 
 RUBY_EXTERN VALUE mMagro;
 
