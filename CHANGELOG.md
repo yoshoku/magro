@@ -1,3 +1,7 @@
+# 0.4.0
+- Rename extension file for reading and writing image file.
+- Update documentations.
+
 # 0.3.0
 - Add [filter module](https://yoshoku.github.io/magro/doc/Magro/Filter.html) consists of image filtering methods.
 - Change to use round instead of ceil in [quantization of resize method](https://github.com/yoshoku/magro/commit/1b3308ddfb98a650889483af3cd2045aaf6b8837) when given integer image.
