@@ -1,6 +1,6 @@
 # Magro
 
-[![Build Status](https://travis-ci.org/yoshoku/magro.svg?branch=master)](https://travis-ci.org/yoshoku/magro)
+[![Build Status](https://github.com/yoshoku/magro/workflows/build/badge.svg)](https://github.com/yoshoku/magro/actions?query=workflow%3Abuild)
 [![Gem Version](https://badge.fury.io/rb/magro.svg)](https://badge.fury.io/rb/magro)
 [![BSD 3-Clause License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://github.com/yoshoku/numo-liblinear/blob/master/LICENSE.txt)
 [![Documentation](http://img.shields.io/badge/api-reference-blue.svg)](https://yoshoku.github.io/magro/doc/)
