@@ -1,3 +1,7 @@
+# 0.4.1
+- Add GC guard to narray given to native extension method.
+- Fix some configulation files.
+
 # 0.4.0
 - Rename extension file for reading and writing image file.
 - Update documentations.
