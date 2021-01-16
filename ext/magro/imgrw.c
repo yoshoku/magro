@@ -226,6 +226,8 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
   png_free(png_ptr, row_ptr_ptr);
   png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 
+  RB_GC_GUARD(image);
+
   return Qtrue;
 }
 
@@ -397,6 +399,8 @@ VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
   jpeg_destroy_compress(&jpeg);
 
   fclose(file_ptr);
+
+  RB_GC_GUARD(image);
 
   return Qtrue;
 }
