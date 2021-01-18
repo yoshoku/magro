@@ -126,6 +126,8 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   fclose(file_ptr);
   png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 
+  RB_GC_GUARD(filename_);
+
   return nary;
 }
 
@@ -227,6 +229,7 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
   png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 
   RB_GC_GUARD(image);
+  RB_GC_GUARD(filename_);
 
   return Qtrue;
 }
@@ -299,6 +302,8 @@ VALUE magro_io_read_jpg(VALUE self, VALUE filename_)
   fclose(file_ptr);
   jpeg_finish_decompress(&jpeg);
   jpeg_destroy_decompress(&jpeg);
+
+  RB_GC_GUARD(filename_);
 
   return nary;
 }
@@ -401,6 +406,7 @@ VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
   fclose(file_ptr);
 
   RB_GC_GUARD(image);
+  RB_GC_GUARD(filename_);
 
   return Qtrue;
 }
