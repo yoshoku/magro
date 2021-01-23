@@ -1,3 +1,6 @@
+# 0.4.2
+- Add GC guard to reading and writing image methods.
+
 # 0.4.1
 - Add GC guard to narray given to native extension method.
 - Fix some configulation files.
