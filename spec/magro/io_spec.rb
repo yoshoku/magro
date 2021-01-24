@@ -99,6 +99,24 @@ RSpec.describe Magro::IO do
     expect(img.shape).to eq([5, 5, 3])
   end
 
+  it 'loads png file from the Internet' do
+    img = described_class.imread('https://raw.githubusercontent.com/yoshoku/magro/main/spec/files/TEST_UC.PNG')
+    expect(img.shape).to eq([5, 5, 4])
+    expect(img[true, true, 0]).to eq(img_red)
+    expect(img[true, true, 1]).to eq(img_green)
+    expect(img[true, true, 2]).to eq(img_blue)
+    expect(img[true, true, 3]).to eq(img_alpha)
+  end
+
+  it 'loads jpeg file from the Internet' do
+    img = described_class.imread('https://raw.githubusercontent.com/yoshoku/magro/main/spec/files/test_rgb.jpg')
+    expect(img.shape).to eq([5, 5, 3])
+  end
+
+  it 'raises IOError when given no-extension URL' do
+    expect { described_class.imread('https://github.com/yoshoku/magro') }.to raise_error(IOError)
+  end
+
   it 'saves RGBA png file' do
     res = described_class.imsave(File.expand_path(__dir__ + '/../files/tmp.png'), img_rgba)
     img = described_class.imread(File.expand_path(__dir__ + '/../files/tmp.png'))

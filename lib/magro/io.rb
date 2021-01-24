@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
+require 'open-uri'
+require 'tempfile'
+
 module Magro
   # IO module provides functions for input and output of image file.
   module IO
     module_function
 
     # Loads an image from file.
-    # @param filename [String] Path to image file to be loaded.
+    # @param filename [String] File path or URL of image file to be loaded.
     #   Currently, the following file formats are support:
     #   Portbale Network Graphics (*.png) and JPEG files (*.jpeg, *.jpg, *jpe).
     # @raise [ArgumentError] This error is raised when filename is not String.
@@ -15,8 +18,27 @@ module Magro
     # @return [Numo::UInt8] (shape: [height, width, n_channels]) Loaded image.
     def imread(filename)
       raise ArgumentError, 'Expect class of filename to be String.' unless filename.is_a?(String)
-      return read_jpg(filename) if filename.downcase =~ /\.(jpeg|jpg|jpe)$/
-      return read_png(filename) if filename.downcase =~ /\.png$/
+
+      unless url?(filename)
+        return case filename.downcase
+               when /\.(jpeg|jpg|jpe)$/
+                 read_jpg(filename)
+               when /\.png$/
+                 read_png(filename)
+               end
+      end
+
+      uri = URI.parse(filename)
+      ext = File.extname(uri.path).downcase
+      raise IOError, 'Failed to detect file extension from given URL.' unless ext =~ /\.(jpeg|jpg|jpe|png)$/
+
+      uri.open do |file|
+        temp = Tempfile.new(['magro_', ext])
+        temp.binmode
+        temp.write(file.read)
+        temp.rewind
+        imread(temp.path)
+      end
     end
 
     # Saves an image to file.
@@ -46,6 +68,11 @@ module Magro
       false
     end
 
-    private_class_method :read_jpg, :read_png, :save_jpg, :save_png
+    def url?(str)
+      uri = URI.parse(str)
+      uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+    end
+
+    private_class_method :read_jpg, :read_png, :save_jpg, :save_png, :url?
   end
 end
