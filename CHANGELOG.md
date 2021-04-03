@@ -1,3 +1,7 @@
+# 0.4.3
+- Fix imread method to read image from URL.
+- Fix some configulation files.
+
 # 0.4.2
 - Add GC guard to reading and writing image methods.
 
