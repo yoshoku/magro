@@ -6,10 +6,12 @@
 #include <string.h>
 
 #include <setjmp.h>
-#include <png.h>
+
 #include <jpeglib.h>
+#include <png.h>
 
 #include <ruby.h>
+
 #include <numo/narray.h>
 #include <numo/template.h>
 

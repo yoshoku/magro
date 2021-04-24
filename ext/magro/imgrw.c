@@ -5,9 +5,7 @@ RUBY_EXTERN VALUE mMagro;
 /**
  * @!visibility private
  */
-static
-VALUE magro_io_read_png(VALUE self, VALUE filename_)
-{
+static VALUE magro_io_read_png(VALUE self, VALUE filename_) {
   char* filename = StringValuePtr(filename_);
   FILE* file_ptr = fopen(filename, "rb");
   unsigned char header[8];
@@ -21,7 +19,7 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   png_uint_32 y;
   int n_dims = 0;
   int n_ch;
-  size_t shape[3] = { 0 };
+  size_t shape[3] = {0};
   VALUE nary;
   uint8_t* nary_ptr;
 
@@ -76,36 +74,36 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
   }
 
   switch (color_type) {
-    case PNG_COLOR_TYPE_GRAY:
-      n_ch = 1;
-      n_dims = 2;
-      shape[0] = height;
-      shape[1] = width;
-      break;
-    case PNG_COLOR_TYPE_GRAY_ALPHA:
-      n_ch = 2;
-      n_dims = 3;
-      shape[0] = height;
-      shape[1] = width;
-      shape[2] = 2;
-      break;
-    case PNG_COLOR_TYPE_RGB:
-      n_ch = 3;
-      n_dims = 3;
-      shape[0] = height;
-      shape[1] = width;
-      shape[2] = 3;
-      break;
-    case PNG_COLOR_TYPE_RGB_ALPHA:
-      n_ch = 4;
-      n_dims = 3;
-      shape[0] = height;
-      shape[1] = width;
-      shape[2] = 4;
-      break;
-    default:
-      n_dims = 0;
-      break;
+  case PNG_COLOR_TYPE_GRAY:
+    n_ch = 1;
+    n_dims = 2;
+    shape[0] = height;
+    shape[1] = width;
+    break;
+  case PNG_COLOR_TYPE_GRAY_ALPHA:
+    n_ch = 2;
+    n_dims = 3;
+    shape[0] = height;
+    shape[1] = width;
+    shape[2] = 2;
+    break;
+  case PNG_COLOR_TYPE_RGB:
+    n_ch = 3;
+    n_dims = 3;
+    shape[0] = height;
+    shape[1] = width;
+    shape[2] = 3;
+    break;
+  case PNG_COLOR_TYPE_RGB_ALPHA:
+    n_ch = 4;
+    n_dims = 3;
+    shape[0] = height;
+    shape[1] = width;
+    shape[2] = 4;
+    break;
+  default:
+    n_dims = 0;
+    break;
   }
 
   if (n_dims == 0) {
@@ -134,9 +132,7 @@ VALUE magro_io_read_png(VALUE self, VALUE filename_)
 /**
  * @!visibility private
  */
-static
-VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
-{
+static VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image) {
   char* filename = StringValuePtr(filename_);
   FILE* file_ptr = fopen(filename, "wb");
   png_structp png_ptr;
@@ -175,18 +171,18 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
   }
 
   switch (n_ch) {
-    case 4:
-      color_type = PNG_COLOR_TYPE_RGBA;
-      break;
-    case 3:
-      color_type = PNG_COLOR_TYPE_RGB;
-      break;
-    case 2:
-      color_type = PNG_COLOR_TYPE_GRAY_ALPHA;
-      break;
-    default:
-      color_type = PNG_COLOR_TYPE_GRAY;
-      break;
+  case 4:
+    color_type = PNG_COLOR_TYPE_RGBA;
+    break;
+  case 3:
+    color_type = PNG_COLOR_TYPE_RGB;
+    break;
+  case 2:
+    color_type = PNG_COLOR_TYPE_GRAY_ALPHA;
+    break;
+  default:
+    color_type = PNG_COLOR_TYPE_GRAY;
+    break;
   }
 
   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
@@ -208,8 +204,8 @@ VALUE magro_io_save_png(VALUE self, VALUE filename_, VALUE image)
     return Qfalse;
   }
 
-  png_set_IHDR(png_ptr, info_ptr, width, height, bit_depth, color_type,
-    PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+  png_set_IHDR(png_ptr, info_ptr, width, height, bit_depth, color_type, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
+               PNG_FILTER_TYPE_DEFAULT);
 
   row_ptr_ptr = png_malloc(png_ptr, height * sizeof(png_bytep));
   for (y = 0; y < height; y++) {
@@ -239,9 +235,7 @@ struct my_error_mgr {
   jmp_buf setjmp_buffer;
 };
 
-static void
-my_error_exit(j_common_ptr cinfo)
-{
+static void my_error_exit(j_common_ptr cinfo) {
   struct my_error_mgr* my_err = (struct my_error_mgr*)cinfo->err;
   (*cinfo->err->output_message)(cinfo);
   longjmp(my_err->setjmp_buffer, 1);
@@ -250,16 +244,14 @@ my_error_exit(j_common_ptr cinfo)
 /**
  * @!visibility private
  */
-static
-VALUE magro_io_read_jpg(VALUE self, VALUE filename_)
-{
+static VALUE magro_io_read_jpg(VALUE self, VALUE filename_) {
   char* filename = StringValuePtr(filename_);
   FILE* file_ptr = fopen(filename, "rb");
   struct jpeg_decompress_struct jpeg;
   struct my_error_mgr err;
   unsigned int width, height;
   int n_colors;
-  size_t shape[3] = { 0 };
+  size_t shape[3] = {0};
   int n_dims;
   unsigned int y;
   VALUE nary;
@@ -311,9 +303,7 @@ VALUE magro_io_read_jpg(VALUE self, VALUE filename_)
 /**
  * @!visibility private
  */
-static
-VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
-{
+static VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self) {
   VALUE filename_;
   VALUE image;
   VALUE quality_;
@@ -378,15 +368,15 @@ VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
   jpeg.input_components = n_ch;
 
   switch (n_ch) {
-    case 3:
-      jpeg.in_color_space = JCS_RGB;
-      break;
-    case 1:
-      jpeg.in_color_space = JCS_GRAYSCALE;
-      break;
-    default:
-      jpeg.in_color_space = JCS_UNKNOWN;
-      break;
+  case 3:
+    jpeg.in_color_space = JCS_RGB;
+    break;
+  case 1:
+    jpeg.in_color_space = JCS_GRAYSCALE;
+    break;
+  default:
+    jpeg.in_color_space = JCS_UNKNOWN;
+    break;
   }
 
   jpeg_set_defaults(&jpeg);
@@ -411,8 +401,7 @@ VALUE magro_io_save_jpg(int argc, VALUE* argv, VALUE self)
   return Qtrue;
 }
 
-void init_io_module()
-{
+void init_io_module() {
   VALUE mIO = rb_define_module_under(mMagro, "IO");
   rb_define_module_function(mIO, "read_png", magro_io_read_png, 1);
   rb_define_module_function(mIO, "save_png", magro_io_save_png, 2);
