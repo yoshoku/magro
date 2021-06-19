@@ -1,0 +1,12 @@
+module Magro
+  module Transform
+    def self?.resize: (Numo::UInt8 image, height: Integer height, width: Integer width) -> Numo::UInt8
+
+    private
+
+    INTEGER_NARRAY: Array[String]
+
+    def self?.bilinear_resize: (Numo::UInt8 image, Integer new_height, Integer new_width) -> Numo::UInt8
+    def self?.integer_narray?: (Numo::NArray image) -> bool
+  end
+end

@@ -1,0 +1,14 @@
+module Magro
+  module IO
+    def self?.imread: (String filename) -> Numo::UInt8?
+    def self?.imsave: (String filename, Numo::UInt8 image, ?quality: Integer) -> bool
+
+    private
+
+    def self?.read_jpg: (String filename) -> Numo::UInt8
+    def self?.read_png: (String filename) -> Numo::UInt8
+    def self?.save_jpg: (String filename, Numo::UInt8 image, Integer? quality) -> bool
+    def self?.save_png: (String filename, Numo::UInt8 image) -> bool
+    def self?.url?: (String str) -> bool
+  end
+end

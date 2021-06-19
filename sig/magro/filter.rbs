@@ -1,0 +1,20 @@
+module Magro
+  module Filter
+    def self?.filter2d: (Numo::UInt8 image, Numo::DFloat kernel, ?scale: Float? scale, ?offset: Integer offset) -> Numo::UInt8
+    def self?.convolve2d: (magro_image_narray arr1, magro_image_narray arr2) -> magro_image_narray
+
+    private
+
+    INTEGER_NARRAY: Array[String]
+
+    #def self?.zero_padding: (magro_image_narray image, Integer filter_h, Integer filter_w) -> magro_image_narray
+    #def self?.filter1ch: (magro_image_narray image, Numo::DFloat kernel, Float? scale, Integer offset) -> magro_image_narray
+    #def self?.im2col: (magro_image_narray image, Integer filter_h, Integer filter_w) -> magro_image_narray
+    #def self?.integer_narray?: (Numo::NArray image) -> bool
+
+    def self?.zero_padding: (untyped image, Integer filter_h, Integer filter_w) -> untyped
+    def self?.filter1ch: (untyped image, Numo::DFloat kernel, Float? scale, Integer offset) -> untyped
+    def self?.im2col: (untyped image, Integer filter_h, Integer filter_w) -> untyped
+    def self?.integer_narray?: (Numo::NArray image) -> bool
+  end
+end

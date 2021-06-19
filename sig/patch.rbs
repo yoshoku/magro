@@ -1,0 +1,90 @@
+module Numo
+  class NArray
+    def self.cast: (untyped a) -> untyped
+    def self.zeros: (*Integer) -> untyped
+    def self.[]: (*untyped) -> untyped
+    def []: () -> untyped
+    def []=: () -> untyped
+    def +: (untyped) -> untyped
+    def empty?: () -> bool
+    def flatten: () -> untyped
+    def initialize: (*untyped) -> untyped
+    def ndim: () -> Integer
+    def shape: () -> [Integer, Integer]
+    def swapaxes: (Integer, Integer) -> untyped
+    def transpose: (*untyped) -> untyped
+  end
+
+  class Int8 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class Int16 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class Int32 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+    def seq: (*untyped) -> untyped
+  end
+
+  class Int64 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class UInt8 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class UInt16 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class UInt32 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class UInt64 < NArray
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class SFloat < NArray
+    def sum: (*untyped) -> untyped
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+
+  class DFloat < NArray
+    def sum: (*untyped) -> untyped
+    def *: (untyped) -> untyped
+    def +: (untyped) -> untyped
+    def []: (*untyped) -> untyped
+    def []=: (*untyped) -> untyped
+  end
+end
