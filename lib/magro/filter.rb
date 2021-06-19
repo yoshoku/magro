@@ -32,7 +32,7 @@ module Magro
       if n_channels.nil?
         filter1ch(padded, kernel, scale, offset)
       else
-        image.class.zeros(*image.shape).tap do |filtered|
+        image.class.zeros(image.shape).tap do |filtered|
           n_channels.times do |c|
             filtered[true, true, c] = filter1ch(padded[true, true, c], kernel, scale, offset)
           end
