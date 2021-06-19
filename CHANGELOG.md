@@ -1,3 +1,7 @@
+# 0.5.0
+- Add type declaration files.
+- Refactor some codes.
+
 # 0.4.3
 - Fix imread method to read image from URL.
 - Fix some configulation files.
