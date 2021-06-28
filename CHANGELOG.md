@@ -1,3 +1,6 @@
+# 0.5.1
+- Fix version specifier of runtime dependencies.
+
 # 0.5.0
 - Add type declaration files.
 - Refactor some codes.
