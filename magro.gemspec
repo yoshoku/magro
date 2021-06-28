@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/magro/extconf.rb']
 
-  spec.add_runtime_dependency 'numo-narray', '~> 0.9.1'
+  spec.add_runtime_dependency 'numo-narray', '>= 0.9.1'
 end
