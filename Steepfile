@@ -1,5 +1,5 @@
 target :lib do
-  signature "sig"
+  signature "sig", "sig-deps"
 #
   check "lib"                       # Directory name
 #   check "Gemfile"                   # File name
