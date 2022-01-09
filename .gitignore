@@ -11,12 +11,14 @@
 /spec/files/tmp.png
 /spec/files/tmp_UC.JPEG
 /spec/files/tmp_UC.PNG
+/node_modules/
 
 # rspec failure tracking
 .rspec_status
 
 *.swp
 *.bundle
+*.lock
 tags
 .DS_Store
 .ruby-version
