@@ -60,7 +60,3 @@ Or install it yourself as:
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/yoshoku/magro.
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Code of Conduct
-
-Everyone interacting in the Magro project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/yoshoku/magro/blob/main/CODE_OF_CONDUCT.md).
