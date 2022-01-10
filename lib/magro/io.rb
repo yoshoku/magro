@@ -48,7 +48,7 @@ module Magro
     # @param image [Numo::UInt8] (shape: [height, width, n_channels]) Image data to be saved.
     # @param quality [Integer] Quality parameter of jpeg image that takes a value between 0 to 100.
     # @raise [ArgumentError] If filename is not String or image is not Numo::NArray, this error is raised.
-    # @raise [IOError] This error is raised when failed to read image file.
+    # @raise [IOError] This error is raised when failed to write image file.
     # @raise [NoMemoryError] If memory allocation of image data fails, this error is raised.
     # @return [Boolean] true if file save is successful.
     def imsave(filename, image, quality: nil)
