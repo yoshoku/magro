@@ -1,6 +1,6 @@
 {
   "name": "magro",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "main": "index.js",
   "repository": "git@github.com:yoshoku/magro.git",
   "author": "Atsushi Tatsuma <yoshoku@outlook.com>",

@@ -1,3 +1,9 @@
+# 0.6.0
+- Reorganize native exntesion codes.
+- Remove dependent gem's type declaration file from installation files.
+- Update documentations.
+- Introduce conventional commits.
+
 # 0.5.1
 - Fix version specifier of runtime dependencies.
 
