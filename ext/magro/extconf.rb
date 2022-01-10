@@ -8,10 +8,7 @@ $LOAD_PATH.each do |lp|
   end
 end
 
-unless have_header('numo/narray.h')
-  puts 'numo/narray.h not found.'
-  exit(1)
-end
+abort 'numo/narray.h not found.' unless have_header('numo/narray.h')
 
 if RUBY_PLATFORM =~ /mswin|cygwin|mingw/
   $LOAD_PATH.each do |lp|
@@ -20,35 +17,14 @@ if RUBY_PLATFORM =~ /mswin|cygwin|mingw/
       break
     end
   end
-  unless have_library('narray', 'nary_new')
-    puts 'libnarray.a not found.'
-    exit(1)
-  end
+  abort 'libnarray.a not found.' unless have_library('narray', 'nary_new')
 end
 
-unless have_header('setjmp.h')
-  puts 'setjmp.h not found.'
-  exit(1)
-end
+abort 'setjmp.h not found.' unless have_header('setjmp.h')
+abort 'png.h not found.' unless have_header('png.h')
+abort 'libpng not found.' unless have_library('png')
 
-unless have_header('png.h')
-  puts 'png.h not found.'
-  exit(1)
-end
-
-unless have_header('jpeglib.h')
-  puts 'jpeglib.h not found.'
-  exit(1)
-end
-
-unless have_library('png')
-  puts 'libpng not found.'
-  exit(1)
-end
-
-unless have_library('jpeg')
-  puts 'libjpeg not found.'
-  exit(1)
-end
+abort 'jpeglib.h not found.' unless have_header('jpeglib.h')
+abort 'libjpeg not found.' unless have_library('jpeg')
 
 create_makefile('magro/magro')
