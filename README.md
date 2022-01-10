@@ -60,3 +60,7 @@ Or install it yourself as:
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/yoshoku/magro.
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the [BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause).
