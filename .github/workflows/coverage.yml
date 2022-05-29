@@ -10,10 +10,9 @@ jobs:
   coverage:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install libpng and libjpeg
         run: sudo apt-get install -y libpng-dev libjpeg-dev
-      - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
         uses: ruby/setup-ruby@v1
         with:
