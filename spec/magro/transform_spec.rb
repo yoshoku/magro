@@ -30,7 +30,7 @@ RSpec.describe Magro::Transform do
       let(:rsz_large) { described_class.resize(small, width: 4, height: 4) }
       let(:rsz_small) { described_class.resize(large, width: 2, height: 2) }
 
-      it 'resizes image with bilinear interpolation method' do
+      it 'resizes image with bilinear interpolation method', :aggregate_failures do
         expect(rsz_large).to eq(exp_large)
         expect(rsz_large.class).to eq(Numo::UInt8)
         expect(rsz_small).to eq(exp_small)
@@ -74,7 +74,7 @@ RSpec.describe Magro::Transform do
       let(:rsz_large_clr) { described_class.resize(small_clr, width: 4, height: 4) }
       let(:rsz_small_clr) { described_class.resize(large_clr, width: 2, height: 2) }
 
-      it 'resizes image with bilinear interpolation method' do
+      it 'resizes image with bilinear interpolation method', :aggregate_failures do
         expect(rsz_large_clr).to eq(exp_large_clr)
         expect(rsz_large_clr.class).to eq(Numo::UInt8)
         expect(rsz_small_clr).to eq(exp_small_clr)

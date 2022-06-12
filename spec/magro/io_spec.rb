@@ -52,7 +52,7 @@ RSpec.describe Magro::IO do
     img
   end
 
-  it 'loads RGBA png file' do
+  it 'loads RGBA png file', :aggregate_failures do
     img = described_class.imread(File.expand_path("#{__dir__}/../files/test.png"))
     expect(img.shape).to eq([5, 5, 4])
     expect(img[true, true, 0]).to eq(img_red)
@@ -61,7 +61,7 @@ RSpec.describe Magro::IO do
     expect(img[true, true, 3]).to eq(img_alpha)
   end
 
-  it 'loads RGB png file' do
+  it 'loads RGB png file', :aggregate_failures do
     img = described_class.imread(File.expand_path("#{__dir__}/../files/test_rgb.png"))
     expect(img.shape).to eq([5, 5, 3])
     expect(img[true, true, 0]).to eq(img_red)
@@ -69,13 +69,13 @@ RSpec.describe Magro::IO do
     expect(img[true, true, 2]).to eq(img_blue)
   end
 
-  it 'loads grayscale png file' do
+  it 'loads grayscale png file', :aggregate_failures do
     img = described_class.imread(File.expand_path("#{__dir__}/../files/test_gray.png"))
     expect(img.shape).to eq([5, 5])
     expect(img).to eq(img_gray)
   end
 
-  it 'loads png file with upper case extension' do
+  it 'loads png file with upper case extension', :aggregate_failures do
     img = described_class.imread(File.expand_path("#{__dir__}/../files/TEST_UC.PNG"))
     expect(img.shape).to eq([5, 5, 4])
     expect(img[true, true, 0]).to eq(img_red)
@@ -99,7 +99,7 @@ RSpec.describe Magro::IO do
     expect(img.shape).to eq([5, 5, 3])
   end
 
-  it 'loads png file from the Internet' do
+  it 'loads png file from the Internet', :aggregate_failures do
     img = described_class.imread('https://raw.githubusercontent.com/yoshoku/magro/main/spec/files/TEST_UC.PNG')
     expect(img.shape).to eq([5, 5, 4])
     expect(img[true, true, 0]).to eq(img_red)
@@ -117,7 +117,7 @@ RSpec.describe Magro::IO do
     expect { described_class.imread('https://github.com/yoshoku/magro') }.to raise_error(IOError)
   end
 
-  it 'saves RGBA png file' do
+  it 'saves RGBA png file', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp.png"), img_rgba)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp.png"))
     expect(res).to be_truthy
@@ -125,7 +125,7 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_rgba)
   end
 
-  it 'saves RGB png file' do
+  it 'saves RGB png file', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp.png"), img_rgba[true, true, 0..2])
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp.png"))
     expect(res).to be_truthy
@@ -133,7 +133,7 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_rgb)
   end
 
-  it 'saves grayscale png file' do
+  it 'saves grayscale png file', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp.png"), img_gray)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp.png"))
     expect(res).to be_truthy
@@ -141,7 +141,7 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_gray)
   end
 
-  it 'saves png file with uppper case extension' do
+  it 'saves png file with uppper case extension', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp_UC.PNG"), img_rgba)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp_UC.PNG"))
     expect(res).to be_truthy
@@ -149,7 +149,7 @@ RSpec.describe Magro::IO do
     expect(img).to eq(img_rgba)
   end
 
-  it 'saves RGB jpeg file' do
+  it 'saves RGB jpeg file', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp.jpeg"), img_rgb, quality: 50)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp.jpeg"))
     err = Math.sqrt(((img_rgb - img)**2).sum.fdiv(img.shape.reduce(&:*)))
@@ -158,7 +158,7 @@ RSpec.describe Magro::IO do
     expect(err).to be <= 10
   end
 
-  it 'saves grayscale jpeg file' do
+  it 'saves grayscale jpeg file', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp.jpeg"), img_gray)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp.jpeg"))
     err = Math.sqrt(((img_gray - img)**2).sum.fdiv(img.shape.reduce(&:*)))
@@ -167,7 +167,7 @@ RSpec.describe Magro::IO do
     expect(err).to be <= 2
   end
 
-  it 'saves RGB jpeg file with uppser case extension' do
+  it 'saves RGB jpeg file with uppser case extension', :aggregate_failures do
     res = described_class.imsave(File.expand_path("#{__dir__}/../files/tmp_UC.JPEG"), img_rgb, quality: 50)
     img = described_class.imread(File.expand_path("#{__dir__}/../files/tmp_UC.JPEG"))
     err = Math.sqrt(((img_rgb - img)**2).sum.fdiv(img.shape.reduce(&:*)))
@@ -190,7 +190,7 @@ RSpec.describe Magro::IO do
     expect { described_class.imread(nil) }.to raise_error(ArgumentError)
   end
 
-  it 'raises ArgumentError when given wrong arguments on saving' do
+  it 'raises ArgumentError when given wrong arguments on saving', :aggregate_failures do
     filename = File.expand_path("#{__dir__}/../files/tmp.jpeg")
     expect { described_class.imsave(nil, img_gray) }.to raise_error(ArgumentError)
     expect { described_class.imsave(filename, img_gray, quality: 101) }.to raise_error(ArgumentError)
