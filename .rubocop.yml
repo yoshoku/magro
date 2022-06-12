@@ -19,9 +19,21 @@ Gemspec/RequiredRubyVersion:
 Layout/LineLength:
   AllowedPatterns: ['(\A|\s)#']
 
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 24
 
 Metrics/ParameterLists:
   Max: 8
@@ -40,7 +52,7 @@ RSpec/ExampleLength:
   Max: 16
 
 RSpec/MultipleMemoizedHelpers:
-  Max: 8
+  Max: 16
 
 RSpec/NamedSubject:
   Enabled: false
