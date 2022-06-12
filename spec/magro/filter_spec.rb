@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Magro::Filter do
-
   context 'when given image is grayscale image' do
     let(:image) do
+      # rubocop:disable Layout/ExtraSpacing, Layout/SpaceInsideArrayLiteralBrackets
       Numo::UInt8[
         [ 0,  32,   0,  32,  0],
         [32,   0, 128,   0, 32],
@@ -11,6 +11,7 @@ RSpec.describe Magro::Filter do
         [32,   0, 128,   0, 32],
         [ 0,  32,   0,  32,  0]
       ]
+      # rubocop:enable Layout/ExtraSpacing, Layout/SpaceInsideArrayLiteralBrackets
     end
 
     let(:kernel) do
@@ -22,6 +23,7 @@ RSpec.describe Magro::Filter do
     end
 
     it 'applies box filter' do
+      # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
       expect(described_class.filter2d(image, kernel)).to eq(Numo::UInt8[
         [ 5, 25,  15, 25,  5],
         [25, 44,  93, 44, 25],
@@ -29,6 +31,7 @@ RSpec.describe Magro::Filter do
         [25, 44,  93, 44, 25],
         [ 5, 25,  15, 25,  5]
       ])
+      # rubocop:enable Layout/SpaceInsideArrayLiteralBrackets
     end
   end
 
