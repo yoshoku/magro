@@ -30,7 +30,7 @@ module Magro
 
       uri = URI.parse(filename)
       ext = File.extname(uri.path).downcase
-      raise IOError, 'Failed to detect file extension from given URL.' unless ext =~ /\.(jpeg|jpg|jpe|png)$/
+      raise IOError, 'Failed to detect file extension from given URL.' unless /\.(jpeg|jpg|jpe|png)$/.match?(ext)
 
       uri.open do |file|
         temp = Tempfile.new(['magro_', ext])
@@ -55,7 +55,7 @@ module Magro
       raise ArgumentError, 'Expect class of filename to be String.' unless filename.is_a?(String)
       raise ArgumentError, 'Expect class of image to be Numo::NArray.' unless image.is_a?(Numo::NArray)
 
-      if filename.downcase =~ /\.(jpeg|jpg|jpe)$/
+      if /\.(jpeg|jpg|jpe)$/.match?(filename.downcase)
         unless quality.nil?
           raise ArgumentError, 'Expect class of quality to be Numeric.' unless quality.is_a?(Numeric)
           raise ArgumentError, 'Range of quality value between 0 to 100.' unless quality.between?(0, 100)
@@ -63,7 +63,7 @@ module Magro
         return save_jpg(filename, image, quality)
       end
 
-      return save_png(filename, image) if filename.downcase =~ /\.png$/
+      return save_png(filename, image) if /\.png$/.match?(filename.downcase)
 
       false
     end
