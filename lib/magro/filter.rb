@@ -26,6 +26,7 @@ module Magro
     # @return [Numo::UInt8] (shape: [height, width, n_channels]) Filtered image.
     def filter2d(image, kernel, scale: nil, offset: 0)
       raise ArgumentError, 'Expect class of image to be Numo::NArray.' unless image.is_a?(Numo::NArray)
+
       filter_h, filter_w = kernel.shape
       padded = zero_padding(image, filter_h, filter_w)
       n_channels = image.shape[2]
@@ -51,6 +52,7 @@ module Magro
       raise ArgumentError, 'Expect class of second input array to be Numo::NArray.' unless arr2.is_a?(Numo::NArray)
       raise ArgumentError, 'Expect first input array to be 2-dimensional array.' unless arr1.ndim == 2
       raise ArgumentError, 'Expect second input array to be 2-dimensional array.' unless arr2.ndim == 2
+
       row1, col1 = arr1.shape
       row2, col2 = arr2.shape
       # FIXME: lib/numo/narray/extra.rb:1098: warning: Using the last argument as keyword parameters is deprecated
