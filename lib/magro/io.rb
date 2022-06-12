@@ -16,7 +16,7 @@ module Magro
     # @raise [IOError] This error is raised when failed to read image file.
     # @raise [NoMemoryError] If memory allocation of image data fails, this error is raised.
     # @return [Numo::UInt8] (shape: [height, width, n_channels]) Loaded image.
-    def imread(filename)
+    def imread(filename) # rubocop:disable Metrics/AbcSize
       raise ArgumentError, 'Expect class of filename to be String.' unless filename.is_a?(String)
 
       unless url?(filename)

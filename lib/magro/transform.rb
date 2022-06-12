@@ -32,7 +32,7 @@ module Magro
 
     # private
 
-    def bilinear_resize(image, new_height, new_width)
+    def bilinear_resize(image, new_height, new_width) # rubocop:disable Metrics/AbcSize
       height, width = image.shape
 
       y_ratio = height.fdiv(new_height)

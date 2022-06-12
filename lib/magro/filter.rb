@@ -47,7 +47,7 @@ module Magro
     # @param arr2 [Numo::NArray] (shape: [row2, col2]) Second input array.
     # @raise [ArgumentError] This error is raised when class of input array is not Numo::NArray.
     # @return [Numo::NArray] (shape: [row1 - row2 + 1, col1 - col2 + 1]) Convolution of arr1 with arr2.
-    def convolve2d(arr1, arr2)
+    def convolve2d(arr1, arr2) # rubocop:disable Metrics/AbcSize
       raise ArgumentError, 'Expect class of first input array to be Numo::NArray.' unless arr1.is_a?(Numo::NArray)
       raise ArgumentError, 'Expect class of second input array to be Numo::NArray.' unless arr2.is_a?(Numo::NArray)
       raise ArgumentError, 'Expect first input array to be 2-dimensional array.' unless arr1.ndim == 2
@@ -63,7 +63,7 @@ module Magro
 
     # private
 
-    def zero_padding(image, filter_h, filter_w)
+    def zero_padding(image, filter_h, filter_w) # rubocop:disable Metrics/AbcSize
       image_h, image_w, n_channels = image.shape
       pad_h = filter_h / 2
       pad_w = filter_w / 2
