@@ -39,6 +39,10 @@ Or install it yourself as:
 
     $ gem install magro
 
+If you use homebrew on Apple M1 mac, specify the homebrew installation directory:
+
+    $ gem install magro -- --with-opt-dir=/opt/homebrew
+
 ## Documentation
 
 - [Magro API Documentation](https://yoshoku.github.io/magro/doc/)
