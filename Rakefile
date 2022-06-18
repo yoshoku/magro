@@ -13,6 +13,11 @@ require 'rake/extensiontask'
 
 task build: :compile # rubocop:disable Rake/Desc
 
+desc 'Run clang-format'
+task 'clang-format' do
+  sh 'clang-format -style=file -Werror --dry-run ext/magro/*.c ext/magro/*.h'
+end
+
 Rake::ExtensionTask.new('magro') do |ext|
   ext.lib_dir = 'lib/magro'
 end
