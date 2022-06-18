@@ -1,3 +1,7 @@
+# 0.6.1
+
+- Refactor codes and configs with RuboCop.
+
 # 0.6.0
 - Reorganize native exntesion codes.
 - Remove dependent gem's type declaration file from installation files.
