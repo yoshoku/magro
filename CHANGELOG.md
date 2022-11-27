@@ -1,3 +1,7 @@
+# 0.6.2
+
+- Fix build failure with Xcode 14 and Ruby 3.1.x.
+
 # 0.6.1
 
 - Refactor codes and configs with RuboCop.
