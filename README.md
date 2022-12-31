@@ -1,7 +1,6 @@
 # Magro
 
 [![Build Status](https://github.com/yoshoku/magro/workflows/build/badge.svg)](https://github.com/yoshoku/magro/actions?query=workflow%3Abuild)
-[![Coverage Status](https://coveralls.io/repos/github/yoshoku/magro/badge.svg?branch=main)](https://coveralls.io/github/yoshoku/magro?branch=main)
 [![Gem Version](https://badge.fury.io/rb/magro.svg)](https://badge.fury.io/rb/magro)
 [![BSD 3-Clause License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://github.com/yoshoku/numo-liblinear/blob/main/LICENSE.txt)
 [![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](https://yoshoku.github.io/magro/doc/)
