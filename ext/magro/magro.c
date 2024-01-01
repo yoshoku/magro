@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019-2022 Atsushi Tatsuma
+ * Copyright (c) 2019-2024 Atsushi Tatsuma
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
